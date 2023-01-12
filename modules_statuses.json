@@ -1,0 +1,8 @@
+{
+    "Core": true,
+    "Dashboard": true,
+    "Auth": true,
+    "Profile": true,
+    "Setting": true,
+    "Social": true
+}
