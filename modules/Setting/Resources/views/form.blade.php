@@ -16,15 +16,15 @@
                         <div class="card-body">
                             <nav>
                                 <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link text-bold {{ $tab == 'website' ? 'active' : '' }}" href="{{ route('backend.settings.index', 'website') }}" role="tab">
+                                    <a class="nav-item nav-link {{ $tab == 'website' ? 'active' : '' }}" href="{{ route('backend.settings.index', 'website') }}" role="tab">
                                         {{__('Website')}}
                                     </a>
 
-                                    <a class="nav-item nav-link text-bold {{ $tab == 'company' ? 'active' : '' }}" href="{{ route('backend.settings.index','company') }}" role="tab">
+                                    <a class="nav-item nav-link {{ $tab == 'company' ? 'active' : '' }}" href="{{ route('backend.settings.index','company') }}" role="tab">
                                         {{__('Company')}}
                                     </a>
 
-                                    <a class="nav-item nav-link text-bold {{ $tab == 'social' ? 'active' : '' }}" href="{{ route('backend.settings.index','social') }}" role="tab">
+                                    <a class="nav-item nav-link {{ $tab == 'social' ? 'active' : '' }}" href="{{ route('backend.settings.index','social') }}" role="tab">
                                         {{__('Social')}}
                                     </a>
                                 </div>
@@ -45,7 +45,7 @@
 
                                 @if ($tab == 'social')
                                     <div class="tab-pane fade active show" id="social" role="tabpanel">
-                                        
+                                       <livewire:setting::socials /> 
                                     </div>
                                 @endif
                             </div>

@@ -10,7 +10,9 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "livewire/livewire": "^2.10",
         "mhmiton/laravel-flashify": "^1.0",
+        "mhmiton/laravel-modules-livewire": "^1.5",
         "nwidart/laravel-modules": "^9.0"
     },
     "require-dev": {

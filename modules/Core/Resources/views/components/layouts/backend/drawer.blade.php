@@ -15,22 +15,18 @@
 							<span class="sidebar-text ms-2 text-dark">Dashboard</span>
 						</a>
 					</li>
-					<li class="nav-item">
-						<a href="" class="nav-link d-flex align-items-center">
-							<i class="ph-address-book-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">About</span>
-						</a>
-					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="ph-kanban-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Project</span>
+							<i class="ph-circles-three-fill"></i>
+							<span class="sidebar-text ms-2 text-dark">Products</span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Something</a></li>
+							<li><a class="dropdown-item" href="#">Products</a></li>
+							<li><a class="dropdown-item" href="#">Product Category</a></li>
+							<li><a class="dropdown-item" href="#">Brands</a></li>
+							<li><a class="dropdown-item" href="#">Units</a></li>
+							<li><a class="dropdown-item" href="#">Print Barcode</a></li>
 						</ul>
 					</li>
 					<li class="nav-item active ">

@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $user->update($validated);
 
         return redirect()
-            ->route('backend.profile.index', 'profile_edit')
+            ->route('backend.profile.index', 'edit_profile')
             ->flashify('updated');
     }
 
