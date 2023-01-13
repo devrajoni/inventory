@@ -2,6 +2,15 @@
 	<div class="content-page mb-5" style="min-height: calc(100vh - 240px);">
 		<div class="container-fluid">
 			<div class="row">
+                <div class="col-lg-12">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-body shadow">
+                          <h4 class="text-success">Dashboard</h4>  
+                        </div>  
+                    </div>
+                </div>
+            </div>
+			<div class="row mt-5">
 				<div class="col-lg-4">
 					<div class="card shadow p-3 mb-5 bg-body rounded">
 						<div class="row">
@@ -34,7 +43,7 @@
 					</div>
 				</div>
 
-					<div class="col-lg-4">
+				<div class="col-lg-4">
 					<div class="card shadow p-3 mb-5 bg-body rounded">
 						<div class="row">
 							<div class="col-md-4 align-items-center d-flex justify-content-center text-success">
@@ -50,7 +59,7 @@
 					</div>
 				</div>
 
-					<div class="col-lg-4">
+				<div class="col-lg-4">
 					<div class="card shadow p-3 mb-5 bg-body rounded">
 						<div class="row">
 							<div class="col-md-4 align-items-center d-flex justify-content-center text-success">
@@ -66,7 +75,7 @@
 					</div>
 				</div>
 
-					<div class="col-lg-4">
+				<div class="col-lg-4">
 					<div class="card shadow p-3 mb-5 bg-body rounded">
 						<div class="row">
 							<div class="col-md-4 align-items-center d-flex justify-content-center text-success">
@@ -82,7 +91,7 @@
 					</div>
 				</div>
 
-					<div class="col-lg-4">
+				<div class="col-lg-4">
 					<div class="card shadow p-3 mb-5 bg-body rounded">
 						<div class="row">
 							<div class="col-md-4 align-items-center d-flex justify-content-center text-success">
@@ -97,6 +106,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 		</div>
 	</div>
 </x-core::layouts.backend>
