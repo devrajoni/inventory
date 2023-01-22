@@ -4,5 +4,9 @@
     "Auth": true,
     "Profile": true,
     "Setting": true,
-    "Social": true
+    "Social": true,
+    "Product": true,
+    "User": true,
+    "Blog": true,
+    "Model": true
 }

@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Traits\HasRoles;
+use Zoha\Metable;
+
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Metable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -18,13 +23,22 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-            'role',
-            'name',
-            'email',
-            'phone',
-            'username',
-            'password',
-            'image',
+        'role_id',
+        'name',
+        'phone',
+        'email',
+        'username',
+        'password',
+        'status',
+    ];
+
+    public $metaAttributes = [
+        'address_line_one',
+        'address_line_two',
+        'country',
+        'state',
+        'city',
+        'postcode',
     ];
 
     protected $hidden = [

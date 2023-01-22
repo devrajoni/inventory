@@ -9,12 +9,14 @@
 			tabindex="0">
 			<nav class="navbar">
 				<ul class="navbar-nav ms-3 p-2">
-					<li class="nav-item active ">
-						<a href="{{ route('backend.dashboard') }}" class="nav-link d-flex align-items-center">
-							<i class="ph-gauge-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Dashboard</span>
-						</a>
-					</li>
+				    @can('dashboard')
+			    		<li class="nav-item active ">
+							<a href="{{ route('backend.dashboard') }}" class="nav-link d-flex align-items-center">
+								<i class="ph-gauge-bold"></i>
+								<span class="sidebar-text ms-2 text-dark">dashboard</span>
+							</a>
+						</li>
+				    @endcan
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,84 +24,35 @@
 							<span class="sidebar-text ms-2 text-dark">Products</span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Products</a></li>
-							<li><a class="dropdown-item" href="#">Product Category</a></li>
-							<li><a class="dropdown-item" href="#">Brands</a></li>
-							<li><a class="dropdown-item" href="#">Units</a></li>
-							<li><a class="dropdown-item" href="#">Print Barcode</a></li>
+							@can('product')
+								<li><a class="dropdown-item" href="{{ route('backend.products.index') }}">Product</a></li>
+							@endcan
+							@can('category')
+								<li><a class="dropdown-item" href="{{ route('backend.categories.index') }}">Category</a></li>
+							@endcan
+							@can('brand')
+								<li><a class="dropdown-item" href="{{ route('backend.brands.index') }}">Brand</a></li>
+							@endcan
+							@can('unit')
+								<li><a class="dropdown-item" href="{{ route('backend.units.index') }}">Unit</a></li>
+							@endcan
 						</ul>
-					</li>
-					<li class="nav-item active ">
-						<a href="" class="nav-link d-flex align-items-center">
-							<i class="ph-scan-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Product</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="" class="nav-link d-flex align-items-center">
-							<i class="ph-user-gear-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Employee</span>
-						</a>
-					</li>
-					<li class="nav-item active ">
-						<a href="" class="nav-link d-flex align-items-center">
-							<i class="ph-gauge-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Dashboard</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="" class="nav-link d-flex align-items-center">
-							<i class="ph-address-book-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">About</span>
-						</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="ph-kanban-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Project</span>
+							<i class="ph-circles-three-fill"></i>
+							<span class="sidebar-text ms-2 text-dark">Role & Permission</span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Something</a></li>
+							@can('user')
+								<li><a class="dropdown-item" href="{{ route('backend.users.index') }}">User</a></li>
+							
+							@endcan
+							@can('role')
+								<li><a class="dropdown-item" href="{{ route('backend.roles.index') }}">Role</a></li>
+							@endcan
 						</ul>
-					</li>
-					<li class="nav-item active ">
-						<a href="" class="nav-link d-flex align-items-center">
-							<i class="ph-scan-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Product</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="" class="nav-link d-flex align-items-center">
-							<i class="ph-user-gear-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Employee</span>
-						</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="ph-kanban-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Project</span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Something</a></li>
-						</ul>
-					</li>
-					<li class="nav-item active ">
-						<a href="" class="nav-link d-flex align-items-center">
-							<i class="ph-scan-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Product</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="" class="nav-link d-flex align-items-center">
-							<i class="ph-user-gear-bold"></i>
-							<span class="sidebar-text ms-2 text-dark">Employee</span>
-						</a>
 					</li>
 				</ul>
 			</nav>
