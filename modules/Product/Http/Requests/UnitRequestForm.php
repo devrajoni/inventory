@@ -3,6 +3,8 @@
 namespace Modules\Product\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Modules\Product\Entities\Unit;
 
 class UnitRequestForm extends FormRequest
 {
@@ -16,11 +18,10 @@ class UnitRequestForm extends FormRequest
         return [
             'name' => [
                 'required',
-                'max:255',
+                Rule::unique(Unit::class)->ignore($this->unit->id ?? null),
             ],
             'short_name' => [
                 'required',
-                'max:255',
             ],
             'base_unit' => [
                 'required',

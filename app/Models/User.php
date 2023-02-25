@@ -41,6 +41,11 @@ class User extends Authenticatable
         'postcode',
     ];
 
+    public function role() {
+        return $this->belongsTo(Role::class, 'role_id');
+
+    }
+
     protected $hidden = [
         'password',
         'remember_token',

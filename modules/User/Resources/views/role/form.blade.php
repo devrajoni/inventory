@@ -5,8 +5,8 @@
                 <div class="col-lg-12">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-body shadow">
-                          <h4 class="text-success">{{ isset($role) ? __('Update Role') : __('Add Role') }}</h4>  
-                        </div>  
+                          <h4 class="text-success">{{ isset($role) ? __('Update Role') : __('Add Role') }}</h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,40 +78,39 @@
             </div>
         </div>
     </div>
+    <x-core::layouts.backend.script>
+        <script>
+            "use strict";
+
+            (function($)  {
+
+                // select all switch
+                $('#rolecheckall').on('click', function() {
+                    if(this.checked){
+                        $('.rolecheck').each(function(){
+                            this.checked = true;
+                        });
+                    }else{
+                        $('.rolecheck').each(function(){
+                            this.checked = false;
+                        });
+                    }
+
+                });
+
+                // select all switch
+                $('.rolecheck').on('click',function(){
+                    if($('.rolecheck:checked').length == $('.rolecheck').length){
+                        $('#rolecheckall').prop('checked',true);
+                    }else{
+                        $('#rolecheckall').prop('checked',false);
+                    }
+                });
+
+            })(jQuery);
+
+
+        </script>
+    </x-core::layouts.backend.script>
 </x-core::layouts.backend>
 
-
-<x-core::layouts.backend.script>
-    <script>
-        "use strict";
-
-        (function($)  {
-
-            // select all switch
-            $('#rolecheckall').on('click', function() {
-                if(this.checked){
-                    $('.rolecheck').each(function(){
-                        this.checked = true;
-                    });
-                }else{
-                    $('.rolecheck').each(function(){
-                        this.checked = false;
-                    });
-                }
-
-            });
-
-            // select all switch
-            $('.rolecheck').on('click',function(){
-                if($('.rolecheck:checked').length == $('.rolecheck').length){
-                    $('#rolecheckall').prop('checked',true);
-                }else{
-                    $('#rolecheckall').prop('checked',false);
-                }
-            });
-
-        })(jQuery);
-
-
-    </script>
-</x-core::layouts.backend.script>

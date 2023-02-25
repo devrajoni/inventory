@@ -18,20 +18,10 @@ class BrandRequestForm extends FormRequest
         return [
             'name' => [
                 'required',
-                 Rule::unique(Brand::class)->ignore($this->brand->name ?? null),
+                'max:255',
+                Rule::unique(Brand::class)->ignore($this->brand->id ?? null),
             ],
         ];
-    }
-
-    public function persist()
-    {
-        $validated = $this->validated();
-
-        if ($this->hasFile('logo')) {
-            $validated['logo'] = upload($this->logo, 'brands/', $this->brand->logo ?? null);
-        }
-
-        return $validated;
     }
 
     /**

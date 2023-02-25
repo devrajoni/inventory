@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('short_name')->nullable();
             $table->enum('base_unit',['piece', 'meter', 'kilogram', 'liter', 'second', 'mole']);
             $table->timestamps();

@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Product\Entities\Brand;
 use Modules\Product\Http\Requests\BrandRequestForm;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::all();
+        $brands = Brand::with('media')->get();
         return view('product::brand.index',compact('brands'));
     }
 
@@ -23,7 +24,11 @@ class BrandController extends Controller
 
     public function store(BrandRequestForm $request)
     {
-        Brand::create($request->persist());
+        $brand = Brand::create($request->validated());
+
+        if($request->hasFile('logo')){
+            $brand->addMedia($request->logo)->toMediaCollection('brand');
+        }
 
         return redirect()->route('backend.brands.index')->flashify('Created', 'Data has been created successfully.');
 
@@ -41,7 +46,13 @@ class BrandController extends Controller
 
     public function update(BrandRequestForm $request, Brand $brand)
     {
-        $brand->update($request->persist());
+        $brand->update($request->validated());
+
+        if($request->hasFile('logo')){
+            $brand->clearMediaCollection('brand');
+            $brand->addMedia($request->logo)->toMediaCollection('brand');
+        }
+
         return redirect()->route('backend.brands.index')->flashify('Updated', 'Data has been updated successfully.');
     }
 

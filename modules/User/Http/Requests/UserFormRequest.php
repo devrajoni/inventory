@@ -5,6 +5,7 @@ namespace Modules\User\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\User;
 use Illuminate\Validation\Rule;
+use Hash;
 
 class UserFormRequest extends FormRequest
 {
@@ -62,6 +63,15 @@ class UserFormRequest extends FormRequest
             ],
             
         ];
+    }
+
+    public function persist()
+    {
+        $validated = $this->validated();
+
+        $validated['password'] = Hash::make($this->password);
+
+        return $validated;
     }
 
     public function authorize()

@@ -19,12 +19,14 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create(['name' => 'dashboard'  , 'guard_name' => 'web',]);
-        Permission::create(['name' => 'product'  , 'guard_name' => 'web',]);
-        Permission::create(['name' => 'category'  , 'guard_name' => 'web',]);
-        Permission::create(['name' => 'brand'  , 'guard_name' => 'web',]);
-        Permission::create(['name' => 'unit'  , 'guard_name' => 'web',]);
-        Permission::create(['name' => 'user'  , 'guard_name' => 'web',]);
-        Permission::create(['name' => 'role'  , 'guard_name' => 'web',]);
+        Permission::create(['name' => 'Dashboard'  , 'guard_name' => 'web',]);
+        Permission::create(['name' => 'Product'  , 'guard_name' => 'web',]);
+        Permission::create(['name' => 'Product Category'  , 'guard_name' => 'web',]);
+        Permission::create(['name' => 'Brand'  , 'guard_name' => 'web',]);
+        Permission::create(['name' => 'Unit'  , 'guard_name' => 'web',]);
+        Permission::create(['name' => 'User'  , 'guard_name' => 'web',]);
+        Permission::create(['name' => 'Role'  , 'guard_name' => 'web',]);
+        Permission::create(['name' => 'Expense'  , 'guard_name' => 'web',]);
+        Permission::create(['name' => 'Expense Category'  , 'guard_name' => 'web',]);
     }
 }

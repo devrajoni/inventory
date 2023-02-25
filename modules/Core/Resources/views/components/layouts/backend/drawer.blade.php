@@ -9,11 +9,11 @@
 			tabindex="0">
 			<nav class="navbar">
 				<ul class="navbar-nav ms-3 p-2">
-				    @can('dashboard')
+				    @can('Dashboard')
 			    		<li class="nav-item active ">
 							<a href="{{ route('backend.dashboard') }}" class="nav-link d-flex align-items-center">
 								<i class="ph-gauge-bold"></i>
-								<span class="sidebar-text ms-2 text-dark">dashboard</span>
+								<span class="sidebar-text ms-2 text-dark">Dashboard</span>
 							</a>
 						</li>
 				    @endcan
@@ -24,16 +24,18 @@
 							<span class="sidebar-text ms-2 text-dark">Products</span>
 						</a>
 						<ul class="dropdown-menu">
-							@can('product')
+							@can('Product')
 								<li><a class="dropdown-item" href="{{ route('backend.products.index') }}">Product</a></li>
 							@endcan
-							@can('category')
-								<li><a class="dropdown-item" href="{{ route('backend.categories.index') }}">Category</a></li>
+
+							@can('Product Category')
+								<li><a class="dropdown-item" href="{{ route('backend.categories.index') }}">Product Category</a></li>
 							@endcan
-							@can('brand')
-								<li><a class="dropdown-item" href="{{ route('backend.brands.index') }}">Brand</a></li>
+							@can('Brand')
+
+								<li><a class="dropdown-item" href="{{ route('backend.brands.index') }}">brand</a></li>
 							@endcan
-							@can('unit')
+							@can('Unit')
 								<li><a class="dropdown-item" href="{{ route('backend.units.index') }}">Unit</a></li>
 							@endcan
 						</ul>
@@ -45,12 +47,26 @@
 							<span class="sidebar-text ms-2 text-dark">Role & Permission</span>
 						</a>
 						<ul class="dropdown-menu">
-							@can('user')
-								<li><a class="dropdown-item" href="{{ route('backend.users.index') }}">User</a></li>
-							
+							@can('User')
+								<li><a class="dropdown-item" href="{{ route('backend.users.index') }}">user</a></li>
 							@endcan
-							@can('role')
+							@can('Role')
 								<li><a class="dropdown-item" href="{{ route('backend.roles.index') }}">Role</a></li>
+							@endcan
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="ph-circles-three-fill"></i>
+							<span class="sidebar-text ms-2 text-dark">Expense</span>
+						</a>
+						<ul class="dropdown-menu">
+							@can('Expense')
+								<li><a class="dropdown-item" href="{{ route('backend.expenses.index') }}">Expense</a></li>
+							@endcan
+							@can('Expense Category')
+								<li><a class="dropdown-item" href="{{ route('backend.expense-categories.index') }}">Expense Category</a></li>
 							@endcan
 						</ul>
 					</li>

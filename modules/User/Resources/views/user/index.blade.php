@@ -32,6 +32,7 @@
 		                			<thead class="text-light bg-success">
 		                				<tr>
 		                					<th class="text-start">SL</th>
+											<th class="text-center">Role</th>
 		                					<th class="text-center">Name</th>
 		                					<th class="text-center">Email</th>
 		                					<th class="text-center">Phone</th>
@@ -44,6 +45,7 @@
 		                				@foreach($users as $user)
 			                				<tr>
 			                					<td class="text-start">{{ $loop->iteration }}</td>
+												<td class="text-center">{{ $user->role->name ?? 'N/A' }}</td>
 			                					<td class="text-center">{{ $user->name }}</td>
 			                					<td class="text-center">{{ $user->email }}</td>
 			                					<td class="text-center">{{ $user->phone }}</td>

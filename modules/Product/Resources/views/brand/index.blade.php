@@ -42,7 +42,9 @@
 			                				<tr>
 			                					<td class="text-start">{{ $loop->iteration }}</td>
 			                					<td class="text-center">{{ $brand->name }}</td>
-			                					<td class="text-center">{{ $brand->logo }}</td>
+			                					<td class="text-center">
+			                						<img src="{{ $brand->getFirstMediaUrl('brand') }}">
+			                					</td>
 			                					<td class="text-end">
 		                						    <div class="d-flex justify-content-end align-items-center">
 		                                                <a href="{{ route('backend.brands.edit', $brand->id) }}" class="btn btn-sm">

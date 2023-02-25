@@ -11,13 +11,13 @@
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #198754; 
+    background:  #009933;
     border-radius: 40px 40px 40px 40px;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #198754; 
+    background:  #009933;
   }
 
 body{
@@ -35,20 +35,21 @@ body{
 }
 
 .ph-user-bold{
-	color: #198754;
+	color:  #009933;
 }
 
 .input-group-text{
-	background-color: #198754;
+	background-color:  #009933;
 }
 
 .navbar-brand{
-	color: #198754 !important;
+	color:  #009933
+ !important;
 	font-size: 23px;
 }
 
 hr{
-	color: #198754;
+	color:  #009933;
 }
 
 nav ul li i{
@@ -57,12 +58,14 @@ nav ul li i{
 }
 
 .nav-link{
-	color: #198754;
+	color:  #009933;
 }
 
 
 nav ul .dropdown-menu:hover {
-	color: #198754 !important;
+	color:  #00e600
+ !important;
+ border: none !important;
 }
 
 .container{
@@ -96,11 +99,11 @@ nav ul .dropdown-menu:hover {
 
 h1{
 	font-weight: bold;
-	color: #198754;
+	color:  #009933;
 }
 
 a{
-	color: #198754;
+	color:  #009933;
 }
 
 a:hover{
@@ -109,18 +112,18 @@ a:hover{
 }
 
 .form-control{
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 .dropdown-item:hover{
-   background: #198754;
+   background:  #009933;
    color: white;
 
 }
 
 label{
 	font-weight: bold;
-	color: #198754;
+	color:  #009933;
 }
 
 .search{

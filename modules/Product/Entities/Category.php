@@ -5,10 +5,11 @@ namespace Modules\Product\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 
-class Category extends Model
+class Category extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
 

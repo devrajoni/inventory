@@ -22,16 +22,17 @@ class UserSeeder extends Seeder
         $user = User::create(['name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' =>Hash::make('admin1234'),
+            'role_id' => 1,
 
         ]);
 
 
-        $role = Role::where('name', 'Admin')->first();
+        $user->assignRole('Admin');
 
         $permissions = Permission::all();
         
         foreach ( $permissions as $code ) {
-            $role->givePermissionTo($code);
+            $user->givePermissionTo($code);
         };
     }
 }

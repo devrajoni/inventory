@@ -8,5 +8,6 @@
     "Product": true,
     "User": true,
     "Blog": true,
-    "Model": true
+    "Model": true,
+    "Expense": true
 }

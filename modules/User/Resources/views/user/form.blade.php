@@ -85,17 +85,15 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label class="label-control">{{ __('Status') }}</label>
-                                                <div>
-                                                    <select class="form-control" name="status" id="status">
-                                                        <option value="active">{{ __('Active') }}</option>
-                                                        <option value="inactive">{{ __('Inactive') }}</option>
-                                                        <option value="pending">{{ __('Pending') }}</option>
-                                                        <option value="declined">{{ __('Declined') }}</option>
-                                                        <option value="banned">{{ __('Banned') }}</option>
-                                                        <option value="closed">{{ __('Closed') }}</option>
-                                                    </select>
-                                                </div>
+                                                <label class="form-label">{{ __('Status') }}</label>
+                                                <select class="form-select" name="status" id="status">
+                                                    <option value="active">{{ __('Active') }}</option>
+                                                    <option value="inactive">{{ __('Inactive') }}</option>
+                                                    <option value="pending">{{ __('Pending') }}</option>
+                                                    <option value="declined">{{ __('Declined') }}</option>
+                                                    <option value="banned">{{ __('Banned') }}</option>
+                                                    <option value="closed">{{ __('Closed') }}</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <x-core::ui.input
@@ -125,7 +123,6 @@
                                             :value="$user->meta->country ?? null"
                                             required
                                         />
-                                    </div>
                                     </div>
                                      <div class="row">
                                         <x-core::ui.input
@@ -168,12 +165,12 @@
             </div>
         </div>
     </div>
+    <x-core::layouts.backend.script>
+        <script>
+            $(document).ready(function(){
+                $('#status').val("{{$user->status ?? ''}}");
+                $('#role_id').val("{{$user->role_id ?? ''}}");
+            });
+        </script>
+    </x-core::layouts.backend.script>
 </x-core::layouts.backend>
-<x-core::layouts.backend.script>
-    <script>
-        $(document).ready(function(){
-            $('#role_id').val("{{$user->role_id ?? ''}}");
-            $('#status').val("{{$user->status ?? ''}}");
-        });
-    </script>
-</x-core::layouts.backend.script>

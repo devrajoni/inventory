@@ -42,7 +42,7 @@
                                             <tr>
                                                 <td class="text-start">{{ $loop->iteration }}</td>
                                                 <td class="text-center">{{ $category->name }}</td>
-                                                <td class="text-center">{{ $category->logo }}</td>
+                                                <td class="text-center"><img src="{{ $category->getFirstMedia('category') }}" alt="" /></td>
                                                 <td class="text-end">
                                                     <div class="d-flex justify-content-end align-items-center">
                                                         <a href="{{ route('backend.categories.edit', $category->id) }}" class="btn btn-sm">

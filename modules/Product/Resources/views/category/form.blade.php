@@ -37,8 +37,8 @@
 
                                     </div>
                                      <div class="col-lg-4 d-flex mt-3">
-                                    <button type="submit" class="btn btn-success">Submit</button>
-                                    <a href="{{ route('backend.categories.index') }}" class="btn btn-dark ms-3">Back</a>
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <a href="{{ route('backend.categories.index') }}" class="btn btn-dark ms-3">Back</a>
                                     </div>
                                 </form>
                             </div>

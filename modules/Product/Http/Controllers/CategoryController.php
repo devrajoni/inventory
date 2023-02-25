@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Product\Entities\Category;
 use Modules\Product\Http\Requests\CategoryRequestForm;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with('media')->get();
         return view('product::category.index',compact('categories'));
     }
 
@@ -23,7 +24,11 @@ class CategoryController extends Controller
 
     public function store(CategoryRequestForm $request)
     {
-        Category::create($request->persist());
+        $category = Category::create($request->validated());
+
+        if($request->hasFile('logo')){
+            $category->addMedia($request->logo)->toMediaCollection('category');
+        }
 
         return redirect()->route('backend.categories.index')->flashify('Created', 'Data has been created successfully.');
 
@@ -41,7 +46,12 @@ class CategoryController extends Controller
 
     public function update(CategoryRequestForm $request, Category $category)
     {
-        $category->update($request->persist());
+        $category->update($request->validated());
+
+        if($request->hasFile('logo')){
+            $category->clearMediaCollection('category');
+            $category->addMedia($request->logo)->toMediaCollection('category');
+        }
         return redirect()->route('backend.categories.index')->flashify('Updated', 'Data has been updated successfully.');
     }
 

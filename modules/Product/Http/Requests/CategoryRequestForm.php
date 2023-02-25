@@ -18,20 +18,10 @@ class CategoryRequestForm extends FormRequest
         return [
              'name' => [
                 'required',
-                 Rule::unique(Category::class)->ignore($this->category->name ?? null),
+                'max:255',
+                Rule::unique(Category::class)->ignore($this->category->id ?? null),
             ],
         ];
-    }
-
-    public function persist()
-    {
-        $validated = $this->validated();
-
-        if ($this->hasFile('logo')) {
-            $validated['logo'] = upload($this->logo, 'category/', $this->category->logo ?? null);
-        }
-
-        return $validated;
     }
 
     /**

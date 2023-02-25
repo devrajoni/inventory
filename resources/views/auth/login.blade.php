@@ -1,4 +1,4 @@
-<x-auth::layouts.auth>
+<x-auth>
      <main class="login-form">
         <div class="container d-flex align-items-center vh-100" style="text-align: center;">
             <div class="row gx-0 gy-0 justify-content-center bg-white" style="border-radius: 15px; overflow: hidden;">
@@ -33,4 +33,4 @@
             </div>
         </div>
     </main>
-</x-auth::layouts.auth>
+</x-auth>
