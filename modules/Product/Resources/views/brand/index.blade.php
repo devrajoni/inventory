@@ -5,7 +5,7 @@
                 <div class="col-lg-12">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-body shadow">
-                          <h4 class="text-success">Brand</h4>  
+                          <h4 class="text-success">data</h4>  
                         </div>  
                     </div>
                 </div>
@@ -38,19 +38,19 @@
 		                				</tr>
 		                			</thead>
 		                			<tbody>
-		                				@foreach($brands as $brand)
+		                				@foreach($brands as $data)
 			                				<tr>
 			                					<td class="text-start">{{ $loop->iteration }}</td>
-			                					<td class="text-center">{{ $brand->name }}</td>
+			                					<td class="text-center">{{ $data->name }}</td>
 			                					<td class="text-center">
-			                						<img src="{{ $brand->getFirstMediaUrl('brand') }}">
+			                						<img src="{{ $data->getFirstMediaUrl('brand') }}" style="height:100px; width: 100px; border-radius:50%;">
 			                					</td>
 			                					<td class="text-end">
 		                						    <div class="d-flex justify-content-end align-items-center">
-		                                                <a href="{{ route('backend.brands.edit', $brand->id) }}" class="btn btn-sm">
+		                                                <a href="{{ route('backend.brands.edit', $data->id) }}" class="btn btn-sm">
 		                                                    <i class="ph-note-pencil-bold text-success fs-3"></i>
 		                                                </a>
-		                                                <form action="{{ route('backend.brands.destroy', $brand->id)}}" method="POST" onsubmit="return confirm('Are you sure?');">
+		                                                <form action="{{ route('backend.brands.destroy', $data->id)}}" method="POST" onsubmit="return confirm('Are you sure?');">
 		                                                    @csrf
 		                                                    @method('delete')
 		                                                    <button  class="btn btn-sm">
