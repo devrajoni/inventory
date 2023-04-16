@@ -17,4 +17,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'backend', 'as' => 'backend.
     Route::get('/export', [ProductsController::class, 'export'])->name('export');
     Route::get('/importExportView', [ProductsController::class, 'importExportView'])->name('importExportView');
     Route::post('/import', [ProductsController::class, 'import'])->name('import');
+    Route::get('/searches', [ProductsController::class, 'search'])->name('searches');
 });

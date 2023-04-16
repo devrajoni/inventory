@@ -7,13 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Product\Entities\Unit;
 use Modules\Product\Http\Requests\UnitRequestForm;
-use Spatie\MediaLibrary\InteractsWithMedia;
 
 class UnitController extends Controller
 {
     public function index()
     {
-        $units = Unit::with('media')->get();
+        $units = Unit::get();
         return view('product::unit.index',compact('units'));
     }
 

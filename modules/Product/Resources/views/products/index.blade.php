@@ -13,9 +13,9 @@
             <div class="card" style="border-radius: 10px;">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
-                        <form class="">
+                        <form>
                             <div class="input-group my-3 my-lg-0">
-                                <input type="text" class="form-control search" placeholder="Search" aria-label="Recipient's username"
+                                <input type="text" class="form-control search" placeholder="Search" id="search" name="search" aria-label="Recipient's username"
                                     aria-describedby="basic-addon2">
                                 <button class="input-group-text btn text-white" id="basic-addon2">
                                     <i class="ph-magnifying-glass-bold color-light"></i></button>
@@ -40,6 +40,7 @@
                                             <th class="text-center border-0">{{ __('Brand') }}</th>
                                             <th class="text-center border-0">{{ __('Unit') }}</th>
                                             <th class="text-center border-0">{{ __('Name') }}</th>
+                                            <th class="text-center border-0">{{ __('Image') }}</th>
                                             <th class="text-center border-0">{{ __('Sku') }}</th>
                                             <th class="text-center border-0">{{ __('Price') }}</th>
                                             <th class="text-center border-0">{{ __('Stock') }}</th>
@@ -58,14 +59,20 @@
                                                 <td class="text-center">{{ $product->brand->name ?? 'N/A'}}</td>
                                                 <td class="text-center">{{ $product->unit->name ?? 'N/A'}}</td>
                                                 <td class="text-center">{{ $product->name }}</td>
+                                                <td class="text-center">
+                                                    <img src="{{ $product->getFirstMediaUrl('products') }}" style="height:100px; width: 100px; border-radius:50%;">
+                                                </td>
                                                 <td class="text-center">{{ $product->sku }}</td>
                                                 <td class="text-center">{{ $product->price }}</td>
                                                 <td class="text-center">{{ $product->in_stock }}</td>
                                                 <td class="text-center">{{ $product->status }}</td>
-                                                <td class="text-end">
-                                                    <div class="d-flex justify-content-end align-items-center">
+                                                <td style="display: flex; padding: 0px!important;">
+                                                    <!-- <div style="display: inline-block; padding: 1px;"> -->
                                                         <a href="{{ route('backend.products.edit', $product->id)}}" class="btn btn-sm">
                                                             <i class="ph-note-pencil-bold text-success fs-3"></i>
+                                                        </a>
+                                                        <a href="{{ route('backend.products.show', $product->id)}}" class="btn btn-sm">
+                                                            <i class="ph-eye-bold text-info fs-3"></i>
                                                         </a>
                                                         <form action="{{ route('backend.products.destroy', $product->id)}}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                             @csrf
@@ -74,7 +81,7 @@
                                                                 <i class="ph-trash-bold text-danger fs-3"></i>
                                                             </button>
                                                         </form>
-                                                    </div>
+                                                   <!--  </div> -->
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -87,4 +94,23 @@
             </div>
         </div>
     </div>
+    @section('scripts')
+        <script>
+            $('#search').on('keyup',function(){
+            $value=$(this).val();
+        
+            $.ajax({
+            type : 'get',
+            url : '{{URL::to('backend/searches')}}',
+            data:{'search':$value},
+            success:function(data){
+                $('tbody').html(data);
+            }
+            });
+            });
+        </script>
+        <script>
+            $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        </script>
+    @endsection
 </x-core::layouts.backend>

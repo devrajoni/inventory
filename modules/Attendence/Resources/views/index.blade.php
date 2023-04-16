@@ -5,7 +5,7 @@
                 <div class="col-lg-12">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-body shadow">
-                          <h4 class="text-success">Category</h4>  
+                          <h4 class="text-success">Brand</h4>  
                         </div>  
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                             </div>
                         </form>
                         <div>
-                            <a href="{{ route('backend.categories.create') }}" class="btn btn-success">Create</a>
+                            <a href="{{ route('backend.attendence.create') }}" class="btn btn-success">Create</a>
                         </div>
                     </div>
                     <div class="row mt-4">
@@ -33,30 +33,28 @@
                                         <tr>
                                             <th class="text-start">SL</th>
                                             <th class="text-center">Name</th>
-                                            <th class="text-center">Logo</th>
-                                            <th class="text-end">Action</th>
+                                            <th class="text-end">Attendence</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($categories as $category)
+                                        @foreach($data as $user)
                                             <tr>
                                                 <td class="text-start">{{ $loop->iteration }}</td>
-                                                <td class="text-center">{{ $category->name }}</td>
-                                                <td class="text-center">
-                                                    <img src="{{ $category->getFirstMediaUrl('category') }}" style="height:100px; width: 100px; border-radius:50%;">
-                                                </td>
-                                                <td class="text-end">
-                                                    <div class="d-flex justify-content-end align-items-center">
-                                                        <a href="{{ route('backend.categories.edit', $category->id) }}" class="btn btn-sm">
-                                                            <i class="ph-note-pencil-bold text-success fs-3"></i>
-                                                        </a>
-                                                        <form action="{{ route('backend.categories.destroy', $category->id)}}" method="POST" onsubmit="return confirm('Are you sure?');">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button  class="btn btn-sm">
-                                                                <i class="ph-trash-bold text-danger fs-3"></i>
-                                                            </button>
-                                                        </form>
+                                                <td class="text-center">{{ $user->name ?? null}}</td>
+                                                <td class=""  style="text-right;">
+                                                    <div class="d-flex">
+                                                    <div class="form-check" style="text-right;">
+                                                      <input class="form-check-input" type="radio" name="present[]" id="present[]">
+                                                      <label class="form-check-label" for="flexRadioDefault1">
+                                                        Present
+                                                      </label>
+                                                    </div>
+                                                    <div class="form-check" style="margin-left: 20px; text-right;">
+                                                      <input class="form-check-input" type="radio" name="absense[]" id="absense[]" checked>
+                                                      <label class="form-check-label" for="flexRadioDefault2">
+                                                        Absense
+                                                      </label>
+                                                    </div>
                                                     </div>
                                                 </td>
                                             </tr>

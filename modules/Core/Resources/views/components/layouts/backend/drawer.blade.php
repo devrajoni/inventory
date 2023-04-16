@@ -70,6 +70,12 @@
 							@endcan
 						</ul>
 					</li>
+					{{-- <li class="nav-item active ">
+						<a href="{{ route('backend.attendence.index') }}" class="nav-link d-flex align-items-center">
+							<i class="ph-gauge-bold"></i>
+							<span class="sidebar-text ms-2 text-dark">Attendence</span>
+						</a>
+					</li> --}}
 				</ul>
 			</nav>
 		</div>

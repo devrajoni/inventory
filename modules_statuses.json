@@ -9,5 +9,6 @@
     "User": true,
     "Blog": true,
     "Model": true,
-    "Expense": true
+    "Expense": true,
+    "Attendence": true
 }

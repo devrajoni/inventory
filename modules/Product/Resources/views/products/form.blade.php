@@ -118,7 +118,6 @@
                                             name="image"
                                             id="image"
                                             :value="$product->image ?? null"
-                                            required
                                         />
                                         <x-core::ui.input
                                             group="col-md-4"

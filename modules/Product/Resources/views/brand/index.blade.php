@@ -5,7 +5,7 @@
                 <div class="col-lg-12">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-body shadow">
-                          <h4 class="text-success">data</h4>  
+                          <h4 class="text-success">Brand</h4>  
                         </div>  
                     </div>
                 </div>

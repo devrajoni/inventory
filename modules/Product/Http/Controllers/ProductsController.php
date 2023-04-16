@@ -15,7 +15,7 @@ use Illuminate\Routing\Controller;
 use App\Exports\ProductExport;
 use App\Imports\ProductImport;
 use Maatwebsite\Excel\Facades\Excel;
-use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProductsController extends Controller
 {
@@ -47,7 +47,7 @@ class ProductsController extends Controller
         $product = Product::create($request->validated());
 
         if($request->hasFile('image')){
-            $product->addMedia($request->image)->toMediaCollection('product');
+            $product->addMedia($request->image)->toMediaCollection('products');
         }
 
         return redirect()->route('backend.products.index')->flashify('Created', 'Data has been created successfully.');
@@ -55,14 +55,15 @@ class ProductsController extends Controller
 
     public function show($id)
     {
-        return view('product::show');
+        $product = Product::where('id', $id)->with('vendor')->with('supplier')->with('category')->with('brand')->with('unit')->with('media')->first();
+        return view('product::products.view', compact('product'));
     }
 
     public function edit(Product $product)
     {
-        $data['vendors'] = User::where('role_id', 7)->get();
+        $data['vendors'] = User::where('role_id', 10)->get();
 
-        $data['suppliers'] = User::where('role_id', 8)->get();
+        $data['suppliers'] = User::where('role_id', 11)->get();
 
         $data['categories'] = User::get();
 
@@ -80,8 +81,8 @@ class ProductsController extends Controller
         $product->update($request->validated());
 
         if($request->hasFile('image')){
-            $product->clearMediaCollection('product');
-            $product->addMedia($request->image)->toMediaCollection('product');
+            $product->clearMediaCollection('products');
+            $product->addMedia($request->image)->toMediaCollection('products');
         }
 
         return redirect()->route('backend.products.index')->flashify('Updated', 'Data has been updated successfully.');
@@ -110,4 +111,35 @@ class ProductsController extends Controller
         Excel::import(new ProductImport,request()->file('file'));
         return redirect()->route('backend.products.index');
     }
+
+    public function search(Request $request)
+    {
+        $output = "";
+        $products=Product::where('name','LIKE','%'.$request->search."%")
+                            ->orWhere('price','LIKE','%'.$request->search."%")
+                            ->orWhere('status','LIKE','%'.$request->search."%")->with('vendor')->with('supplier')->with('category')->with('brand')->with('unit')->with('media')->get();
+
+    if($products)
+    {
+        foreach ($products as $key => $product) {
+            $output.='<tr>'.
+            '<td>'.$product->id.'</td>'.
+            '<td>'.$product->vendor->name .'</td>'.
+            '<td>'.$product->supplier->name .'</td>'.
+            '<td>'.$product->category->name .'</td>'.
+            '<td>'.$product->brand->name .'</td>'.
+            '<td>'.$product->unit->name .'</td>'.
+            '<td>'.$product->name.'</td>'.
+            '<td><img src=" '.$product->getFirstMediaUrl('products').' " style="height:100px; width: 100px; border-radius:50%;"></td>'.
+            '<td>'.$product->sku.'</td>'.
+            '<td>'.$product->price.'</td>'.
+            '<td>'.$product->in_stock.'</td>'.
+            '<td>'.$product->status.'</td>'.
+            '</tr>';
+        }
+        
+        return Response($output);
+    }
+}
+
 }
